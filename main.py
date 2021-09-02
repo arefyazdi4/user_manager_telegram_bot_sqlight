@@ -18,8 +18,9 @@ import tabulate
 import sqlite3
 import string
 import random
-import Constants
 
+# change this part to use this code in your bot
+import Constants
 seconder_token = Constants.API_KEY
 admin_list = ['396700044']
 
