@@ -20,8 +20,10 @@ import string
 import random
 
 # change this part to use this code in your bot
-import Constants
-seconder_token = Constants.API_KEY
+from Constants import API_KEY_TEST
+telegram_bot_API = API_KEY_TEST
+# to have full access in bot put your chat id in here or
+# OR in admin panel function use <not in> instant of <in>
 admin_list = ['396700044']
 
 
@@ -370,6 +372,8 @@ def admin_panel(update: Update, context: CallbackContext) -> int:
     keyboard_2 = [[InlineKeyboardButton("« Back to home", callback_data='back')]]
 
     new_chat_id = str(update.callback_query.message.chat.id)
+    # if you dont have your chat id yrt
+    # in admin panel function use <not in> instant of <in>
     if new_chat_id in admin_list:
         reply_markup = InlineKeyboardMarkup(keyboard_1)
         query.edit_message_text(
@@ -650,7 +654,7 @@ def error(update, context):
 
 
 def main():
-    updater = Updater(seconder_token, use_context=True)
+    updater = Updater(telegram_bot_API, use_context=True)
     dp = updater.dispatcher
 
     conv_handler = ConversationHandler(
