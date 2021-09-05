@@ -18,10 +18,13 @@ import tabulate
 import sqlite3
 import string
 import random
+# set the port number to listen in for the webhook
+import os
+PORT = int(os.environ.get('PORT', 5000))
 
 # change this part to use this code in your bot
 API_KEY_TEST = "1924549790:AAEs3m3zLRIelyIvwEgwyb2h7SEhdP9_7Tk"  # RF_burger BOT API
-telegram_bot_API = API_KEY_TEST
+TOKEN = API_KEY_TEST
 # to have full access in bot put your chat id in here or
 # OR in admin panel function use <not in> instant of <in>
 admin_list = ['396700044']
@@ -654,7 +657,7 @@ def error(update, context):
 
 
 def main():
-    updater = Updater(telegram_bot_API, use_context=True)
+    updater = Updater(TOKEN, use_context=True)
     dp = updater.dispatcher
 
     conv_handler = ConversationHandler(
@@ -692,7 +695,10 @@ def main():
 
     dp.add_error_handler(error)
 
-    updater.start_polling()  # delay for respond time
+    updater.start_webhook(listen="0.0.0.0",
+                          port=int(PORT),
+                          url_path=TOKEN)
+    updater.bot.setWebhook('https://yourherokuappname.herokuapp.com/' + TOKEN)
     updater.idle()
 
 
