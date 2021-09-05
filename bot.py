@@ -20,7 +20,7 @@ import string
 import random
 
 # change this part to use this code in your bot
-from Constants import API_KEY_TEST
+API_KEY_TEST = "1924549790:AAEs3m3zLRIelyIvwEgwyb2h7SEhdP9_7Tk"  # RF_burger BOT API
 telegram_bot_API = API_KEY_TEST
 # to have full access in bot put your chat id in here or
 # OR in admin panel function use <not in> instant of <in>
